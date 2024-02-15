@@ -8,13 +8,13 @@ exports.postPlayer = async (req, res, next) => {
 };
 exports.getPlayer = async (req, res, next) => {
   const players = await Player.findAll();
-  return res.json({ allPlayerDetails: players });
+  res.send({ allPlayerDetails: players });
 };
 
 exports.getfindPlayer = async (req, res, next) => {
   const name = req.params.playerName;
   const player = await Player.findOne({ where: { name: name } });
-  return res.json({ playerDetails: player });
+  return res.send({ playerDetails: player });
 };
 
 exports.deletePlayer = async (req, res, next) => {
