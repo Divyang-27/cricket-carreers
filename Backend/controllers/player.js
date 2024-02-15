@@ -1,29 +1,8 @@
 const Player = require('../models/player');
 
 exports.postPlayer = async (req, res, next) => {
-  const name = req.body.name;
-  const dob = req.body.dob;
-  const imageUrl = req.body.imageUrl;
-  const birthPlace = req.body.birthPlace;
-  const career = req.body.career;
-  const numberOfMatches = req.body.numberOfMatches;
-  const score = req.body.score;
-  const fifties = req.body.fifties;
-  const centuries = req.body.centuries;
-  const wickets = req.body.wickets;
-  const average = req.body.average;
   const player = await Player.create({
-    name: name,
-    dob: dob,
-    imageUrl: imageUrl,
-    birthPlace: birthPlace,
-    career: career,
-    numberOfMatches: numberOfMatches,
-    score: score,
-    fifties: fifties,
-    centuries: centuries,
-    wickets: wickets,
-    average: average,
+   ...req.body
   });
   res.json({ newPlayerDetails: player });
 };
